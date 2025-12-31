@@ -1,0 +1,23 @@
+# iPinYou closed-loop experiment (with simulation)
+
+defaults:
+  - _base/base
+  - datasets/ipinyou
+  - models/deepfm
+  - features/avazu_hash  # Similar features to avazu
+  - simulation/base_2nd_price
+  - simulation/bidding_ecpm
+  - evaluation/bootstrap
+
+experiment:
+  name: ipinyou_closedloop
+  description: Closed-loop DeepFM + simulation on iPinYou
+  
+  training:
+    epochs: 20
+    batch_size: 128
+    learning_rate: 0.001
+  
+  simulation:
+    budget:
+      total: 50000.0

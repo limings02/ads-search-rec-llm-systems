@@ -1,0 +1,19 @@
+# ESMM model configuration (for multitask)
+
+model:
+  name: esmm
+  type: multitask
+  
+  embedding_dim: 16
+  shared_layers: [256, 128]
+  ctr_layers: [64, 32]
+  cvr_layers: [64, 32]
+  
+  activation: relu
+  dropout: 0.1
+  
+  # ESMM specific
+  use_esmm_loss: true
+  
+  optimizer: adam
+  learning_rate: 0.001

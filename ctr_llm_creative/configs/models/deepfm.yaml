@@ -1,0 +1,19 @@
+# DeepFM model configuration
+
+model:
+  name: deepfm
+  type: ctr
+  
+  embedding_dim: 16
+  deep_layers: [256, 128, 64]
+  activation: relu
+  dropout: 0.1
+  
+  # FM part
+  use_fm: true
+  
+  # Deep part  
+  use_deep: true
+  
+  optimizer: adam
+  learning_rate: 0.001

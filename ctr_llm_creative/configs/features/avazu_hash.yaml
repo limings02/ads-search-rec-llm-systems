@@ -1,0 +1,34 @@
+# Avazu feature hashing configuration
+
+features:
+  name: avazu_hash
+  version: 1.0
+  
+  feature_config:
+    # Hashed categorical features
+    site_id:
+      type: categorical
+      transform: hash
+      hash_size: 10000
+    
+    app_id:
+      type: categorical
+      transform: hash
+      hash_size: 10000
+    
+    # Bucketed numerical features
+    hour:
+      type: numerical
+      transform: bucket
+      boundaries: [0, 4, 8, 12, 16, 20, 24]
+    
+    # One-hot categorical
+    device_type:
+      type: categorical
+      transform: vocab
+      vocab_size: 10
+    
+    banner_pos:
+      type: categorical
+      transform: vocab
+      vocab_size: 10

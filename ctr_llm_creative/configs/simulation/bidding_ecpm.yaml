@@ -1,0 +1,18 @@
+# Bidding strategy configuration
+
+bidding:
+  strategy: ecpm  # ecpm, cpa, roi, or custom
+  
+  # For eCPM strategy
+  ecpm_config:
+    base_cpc: 1.0
+    multiplier: 1.0
+  
+  # For CPA strategy
+  cpa_config:
+    target_cpa: 5.0
+    conversion_value: 100.0
+  
+  # For ROI strategy
+  roi_config:
+    target_roi: 3.0

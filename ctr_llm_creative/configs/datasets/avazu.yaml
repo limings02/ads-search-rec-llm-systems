@@ -1,0 +1,46 @@
+# Avazu dataset configuration
+
+dataset:
+  name: avazu
+  version: 1.0
+  dataset_type: ctr
+  raw_path: data/raw/avazu
+  processed_path: data/processed/avazu
+  format: csv
+  
+  feature_fields:
+    - hour
+    - C1
+    - banner_pos
+    - site_id
+    - site_category
+    - app_id
+    - app_category
+    - device_id
+    - device_ip
+    - device_model
+    - device_type
+    - device_conn_type
+    - C14
+    - C15
+    - C16
+    - C17
+    - C18
+    - C19
+    - C20
+    - C21
+  
+  label_fields:
+    - click
+  
+  id_field: id
+  timestamp_field: hour
+  
+  # Split configuration
+  splits:
+    - name: train
+      path: processed/avazu/train.parquet
+    - name: valid
+      path: processed/avazu/valid.parquet
+    - name: test
+      path: processed/avazu/test.parquet

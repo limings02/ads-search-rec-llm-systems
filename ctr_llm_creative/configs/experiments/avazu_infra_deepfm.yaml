@@ -1,0 +1,17 @@
+# Avazu DeepFM experiment
+
+defaults:
+  - _base/base
+  - datasets/avazu
+  - models/deepfm
+  - features/avazu_hash
+
+experiment:
+  name: avazu_deepfm
+  description: DeepFM on Avazu dataset
+  
+  training:
+    epochs: 20
+    batch_size: 128
+    learning_rate: 0.001
+    early_stopping_patience: 5

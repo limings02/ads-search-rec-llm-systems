@@ -1,0 +1,16 @@
+# Base simulation configuration
+
+simulation:
+  auction_type: second_price
+  num_slots: 1
+  
+  # Budget
+  budget:
+    total: 10000.0
+    daily: null
+  
+  # Bid strategy
+  bid_strategy: ecpm
+  
+  # Platform fee (if any)
+  platform_fee: 0.0

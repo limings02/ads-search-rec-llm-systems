@@ -1,0 +1,43 @@
+# Ali-CCP cross-day features configuration
+
+features:
+  name: ali_ccp_crossday
+  version: 1.0
+  
+  feature_windows:
+    # Cross-day features
+    windows:
+      - days: 1
+        prefix: d1
+      - days: 7
+        prefix: d7
+      - days: 30
+        prefix: d30
+  
+  feature_config:
+    user_id:
+      type: categorical
+      transform: vocab
+      vocab_size: 100000
+    
+    item_id:
+      type: categorical
+      transform: vocab
+      vocab_size: 500000
+    
+    price:
+      type: numerical
+      transform: normalize
+      mean: 100.0
+      std: 50.0
+    
+    # Time features
+    day_of_week:
+      type: categorical
+      transform: vocab
+      vocab_size: 7
+    
+    hour:
+      type: categorical
+      transform: vocab
+      vocab_size: 24

@@ -1,0 +1,40 @@
+# iPinYou dataset configuration
+
+dataset:
+  name: ipinyou
+  version: 1.0
+  dataset_type: ctr
+  raw_path: data/raw/ipinyou
+  processed_path: data/processed/ipinyou
+  format: csv
+  
+  feature_fields:
+    - weekday
+    - hour
+    - ip_id
+    - region
+    - city
+    - user_agent
+    - os
+    - browser
+    - advertiser
+    - user_profile_id_1
+    - user_profile_id_2
+    - user_profile_id_3
+    - user_profile_id_4
+    - user_profile_id_5
+    - user_profile_id_6
+  
+  label_fields:
+    - click
+  
+  id_field: impression_id
+  timestamp_field: time
+  
+  splits:
+    - name: train
+      path: processed/ipinyou/train.parquet
+    - name: valid
+      path: processed/ipinyou/valid.parquet
+    - name: test
+      path: processed/ipinyou/test.parquet

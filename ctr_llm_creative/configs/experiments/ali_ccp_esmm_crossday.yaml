@@ -1,0 +1,17 @@
+# Ali-CCP ESMM with cross-day features experiment
+
+defaults:
+  - _base/base
+  - datasets/ali_ccp
+  - models/esmm
+  - features/ali_ccp_crossday
+
+experiment:
+  name: ali_ccp_esmm_crossday
+  description: ESMM on Ali-CCP with cross-day features
+  
+  training:
+    epochs: 30
+    batch_size: 64
+    learning_rate: 0.0005
+    early_stopping_patience: 5

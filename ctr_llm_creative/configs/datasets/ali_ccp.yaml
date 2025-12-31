@@ -1,0 +1,33 @@
+# Ali-CCP dataset configuration
+
+dataset:
+  name: ali_ccp
+  version: 1.0
+  dataset_type: multitask
+  raw_path: data/raw/ali_ccp
+  processed_path: data/processed/ali_ccp
+  format: csv
+  
+  feature_fields:
+    - user_id
+    - item_id
+    - category_id
+    - merchant_id
+    - brand_id
+    - price
+    - time
+  
+  label_fields:
+    - clk
+    - cvr
+  
+  id_field: user_id
+  timestamp_field: time
+  
+  splits:
+    - name: train
+      path: processed/ali_ccp/train.parquet
+    - name: valid
+      path: processed/ali_ccp/valid.parquet
+    - name: test
+      path: processed/ali_ccp/test.parquet
