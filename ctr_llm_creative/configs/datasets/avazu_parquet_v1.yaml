@@ -1,0 +1,58 @@
+dataset: avazu
+
+adapter:
+  class_path: "src.data.adapters.avazu.AvazuAdapter"
+  params:
+    train_path: "E:/沉淀项目/ads-search-rec-llm-systems/ctr_llm_creative/data/raw/avazu/train.parquet"
+    test_path:  "E:/沉淀项目/ads-search-rec-llm-systems/ctr_llm_creative/data/raw/avazu/test.parquet"
+    usecols:
+    - id
+    - click
+    - hour
+    - C1
+    - C14
+    - C15
+    - C16
+    - C17
+    - C18
+    - C19
+    - C20
+    - C21
+    - banner_pos
+    - site_id
+    - site_domain
+    - site_category
+    - app_id
+    - app_domain
+    - app_category
+    - device_id
+    - device_ip
+    - device_model
+    - device_type
+    - device_conn_type
+    - C2
+    - C3
+    - C4
+    - C5
+    - C6
+    - C7
+    - C8
+    - C9
+    - C10
+    - C11
+    - C12
+    - C13
+
+
+split:
+  method: "time"
+  day_col: "_day"
+  id_col: "_id"
+  train_end_day: 20141028
+  valid_days: [20141029, 20141030]
+  test_day: null
+  test_days: null
+  assert_disjoint: true
+
+io:
+  chunksize: 1000000
