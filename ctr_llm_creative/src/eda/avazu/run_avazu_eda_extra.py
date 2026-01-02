@@ -6,7 +6,7 @@ import os
 
 from src.data.adapters.factory import load_yaml, build_adapter_from_config
 from src.eda.avazu.avazu_eda_extra import AvazuEdaExtraConfig, run_all_eda_extra
-
+from src.utils.path_resolver import resolve_paths_in_config
 
 def main():
     ap = argparse.ArgumentParser()
@@ -21,6 +21,7 @@ def main():
     args = ap.parse_args()
 
     cfg_yaml = load_yaml(args.config)
+    cfg_yaml = resolve_paths_in_config(cfg_yaml)
     adp = build_adapter_from_config(cfg_yaml)
 
     interim_root = args.interim_root or (cfg_yaml.get("io", {}) or {}).get(
@@ -28,7 +29,7 @@ def main():
         os.path.join(os.getcwd(), "data", "interim", "avazu"),
     )
     canonical_root = os.path.join(interim_root, "canonical")
-    out_root = os.path.join(interim_root, "eda_extra")
+    out_root = os.path.join(interim_root, "eda_v1_repro", "eda_extra")
 
     batch_size = args.batch_size or (cfg_yaml.get("io", {}) or {}).get("chunksize", 500_000)
 

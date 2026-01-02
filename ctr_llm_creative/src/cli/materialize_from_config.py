@@ -6,7 +6,7 @@ import os
 import time
 
 import pandas as pd
-
+from src.utils.path_resolver import resolve_paths_in_config
 from src.data.adapters.factory import load_yaml, build_adapter_from_config
 
 
@@ -22,6 +22,7 @@ def main():
     args = ap.parse_args()
 
     cfg = load_yaml(args.config)
+    cfg = resolve_paths_in_config(cfg)
     adp = build_adapter_from_config(cfg)
 
     # out_root：CLI > cfg.io.out_root > 默认 interim/avazu

@@ -3,8 +3,8 @@ dataset: avazu
 adapter:
   class_path: "src.data.adapters.avazu.AvazuAdapter"
   params:
-    train_path: "E:/沉淀项目/ads-search-rec-llm-systems/ctr_llm_creative/data/raw/avazu/train.parquet"
-    test_path:  "E:/沉淀项目/ads-search-rec-llm-systems/ctr_llm_creative/data/raw/avazu/test.parquet"
+    train_path: "data/raw/avazu/train.parquet"
+    test_path:  "data/raw/avazu/test.parquet"
     usecols:
     - id
     - click

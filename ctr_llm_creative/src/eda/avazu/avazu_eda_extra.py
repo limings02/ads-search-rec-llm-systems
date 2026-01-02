@@ -10,7 +10,7 @@ from typing import Dict, Iterable, Iterator, List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
-
+from src.utils.path_resolver import resolve_paths_in_config
 
 # =========================================================
 # 读数据：只从 interim/canonical 读，且按 split 子目录建 dataset
@@ -92,7 +92,7 @@ class BloomFilter:
 # =========================================================
 # 统计学工具：PSI / Wilson CI / z-test
 # =========================================================
-def psi_from_distributions(p: np.ndarray, q: np.ndarray, eps: float = 1e-10) -> float:
+def psi_from_distributions(p: np.ndarray, q: np.ndarray, eps: float = 1e-6) -> float:
     """
     PSI = sum( (q-p)*ln(q/p) )
     - p: baseline（通常 train）
