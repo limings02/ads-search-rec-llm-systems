@@ -51,12 +51,22 @@ class HyperLogLog32:
 
     def add(self, x: str) -> None:
         h = self._hash32(x)
-        idx = h & (self.m - 1)          # 低 p 位作为桶号
-        w = h >> self.p                 # 剩余 bits
-        # rank = leading_zeros(w) + 1（在剩余位宽内）
-        rank = self._clz32(w) + 1
+        idx = h & (self.m - 1)      # 低 p 位做桶号
+        w = h >> self.p             # 剩余 (32-p) 位，被右移到低位
+
+        width = 32 - self.p
+        if w == 0:
+            rank = width + 1
+        else:
+            rank = (self._clz32(w) - self.p) + 1   # 关键：减掉被桶号“吃掉”的 p 位
+
+        # 防御性：rank 不应超过 width+1
+        if rank > width + 1:
+            rank = width + 1
         if rank > self.reg[idx]:
             self.reg[idx] = rank
+        assert 1 <= rank <= (32 - self.p + 1)   
+
 
     def estimate(self) -> float:
         # E = alpha*m^2 / sum(2^-reg[i])
